@@ -168,6 +168,85 @@ const ProductPage: React.FC = () => {
               </thead>
 
               <tbody className="divide-y divide-gray-200">
+                {products.length === 0 ? (
+                  <tr>
+                    <td
+                      className="px-3 py-6 text-center text-sm text-gray-500"
+                      colSpan={10}
+                    >
+                      No products found.
+                    </td>
+                  </tr>
+                ) : (
+                  products.map((product, index) => (
+                    <tr key={product.id} className="hover:bg-gray-50">
+                      <td className="px-3 py-3 font-medium text-gray-900">
+                        {index + 1}
+                      </td>
+
+                      <td className="px-3 py-3 text-center text-gray-700">
+                        <PhotoIcon
+                          className="mx-auto h-4 w-4 text-gray-400"
+                        />
+                      </td>
+
+                      <td className="px-3 py-3">
+                        <button className="text-blue-600 hover:underline text-sm font-medium">
+                          {product.title}
+                        </button>
+                      </td>
+
+                      <td className="px-3 py-3 text-sm text-gray-600">
+                        {product.description}
+                      </td>
+
+                      <td className="px-3 py-3 text-gray-700">
+                        {product.price.toFixed(2)}
+                      </td>
+                      <td className="px-3 py-3 text-gray-700">
+                        {product.discountPercentage.toFixed(1)}
+                        %
+                      </td>
+                      <td className="px-3 py-3 text-gray-700">
+                        {product.rating}
+                      </td>
+                      <td className="px-3 py-3 text-gray-700">
+                        {product.stock}
+                      </td>
+
+                      {/* Edit */}
+                      <td className="px-3 py-3 text-center">
+                        <button
+                          onClick={() =>
+                            window.confirm(
+                              `Save the changes for ${product.title}?`,
+                            )
+                          }
+                          className="text-blue-600 hover:text-blue-800"
+                        >
+                          <PencilIcon className="h-4 w-4" />
+                        </button>
+                      </td>
+
+                      {/* Delete */}
+                      <td className="px-3 py-3 text-center">
+                        <button
+                          onClick={() =>
+                            window.confirm(
+                              `Delete the product "${product.title}"?`,
+                            )
+                          }
+                          className="text-red-600 hover:text-red-800"
+                        >
+                          <TrashIcon className="h-4 w-4" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+
+              <tbody className="divide-y divide-gray-200">
                 <tr className="hover:bg-gray-50">
                   <td className="px-3 py-3 font-medium text-gray-900">1</td>
 
