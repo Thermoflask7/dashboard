@@ -4,6 +4,9 @@ declare module "my-types" {
     id: number;
     name: string;
   }
+    export interface NewCategoryInput {
+    name: string;
+  }
 
   export interface Product {
     id: number;
@@ -15,5 +18,15 @@ declare module "my-types" {
     stock: number;
     categoryId: number;
     category: Category;
+  }
+
+  export interface NewProductInput {
+    title: string;
+    description: string;
+    price: number;
+    discountPercentage: number;
+    rating: number;
+    stock: number;
+    categoryId: number;
   }
 }
